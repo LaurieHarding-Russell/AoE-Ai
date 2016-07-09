@@ -1,0 +1,46 @@
+;Economy objects
+;build a house
+(defrule
+  (housing-headroom < 5)
+  (population-headroom != 0)
+  (can-build house)
+=>
+  (build house)
+)
+
+(defrule
+  (building-type-count-total house > 0) ; We want to build a house before a mill
+  (building-type-count-total mill == 0) ; Prevents the construction of multiple mills
+  (resource-found food) ; Builds a mill only if forage bushes or deer is found
+  (can-build mill)
+=>
+  (build mill)
+)
+
+(defrule
+  (building-type-count-total mill > 0)
+  (building-type-count-total lumber-camp == 0)
+  (resource-found wood)
+  (can-build lumber-camp)
+=>
+  (build lumber-camp)
+)
+
+;
+
+;Military Objects
+(defrule
+  (current-age == feudal-age)
+  (can-build archery-range)
+=>
+  (build archery-range)
+)
+
+(defrule
+  (current-age == feudal-age)
+  (can-build archery-range)
+=>
+  (build archery-range)
+)
+
+;Defence

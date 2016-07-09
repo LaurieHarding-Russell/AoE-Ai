@@ -1,0 +1,27 @@
+; Keeping the army simple
+(defrule
+  (can-train archer-line)
+=>
+  (train archer-line)
+)
+
+(defrule
+  (can-train skirmisher-line)
+=>
+  (train skirmisher-line)
+)
+
+;Fighting
+
+
+;Dogeing
+
+(defrule
+	(true)
+=>
+	(set-difficulty-parameter ability-to-dodge-missiles 0)
+	(set-difficulty-parameter ability-to-maintain-distance 0)
+	(disable-self)
+)
+
+;Scouting

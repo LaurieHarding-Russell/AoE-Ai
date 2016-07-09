@@ -1,6 +1,18 @@
-;advance to feudal age
+;Age update
 (defrule
-(can-research feudal-age)
+  (can-research feudal-age)
 =>
-(research feudal-age)
+  (research feudal-age)
+)
+
+(defrule
+  (can-research castle-age)
+=>
+  (research castle-age)
+)
+
+(defrule
+  (can-research imperial-age)
+=>
+  (research imperial-age)
 )
