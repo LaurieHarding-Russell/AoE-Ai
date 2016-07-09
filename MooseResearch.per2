@@ -1,0 +1,6 @@
+;advance to feudal age
+(defrule
+(can-research feudal-age)
+=>
+(research feudal-age)
+)

@@ -1,0 +1,14 @@
+; So this file really should hold much in it.
+; We check the game type and load in the correct
+; .per2 files.
+
+;#load-if-defined DEATH-MATCH
+;#end if etc.
+; We check the game type and load in the correct
+; .per2 files.
+
+
+(load "MooseBuilding")
+(load "MooseEconomy")
+(load "MooseMilitary")
+(load "MooseResearch")

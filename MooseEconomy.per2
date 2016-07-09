@@ -1,0 +1,44 @@
+;build a house
+(defrule
+(housing-headroom < 5)
+(population-headroom != 0)
+(can-build house)
+=>
+(build house)
+)
+
+;build a farm
+(defrule
+(idle-farm-count == 0)
+(can-build farm)
+=>
+(build farm)
+)
+
+;set gatherer distribution for villagers
+(defrule
+(current-age == dark-age)
+=>
+(set-strategic-number sn-food-gatherer-percentage 60)
+(set-strategic-number sn-wood-gatherer-percentage 40)
+(set-strategic-number sn-gold-gatherer-percentage 0)
+(set-strategic-number sn-stone-gatherer-percentage 0)
+)
+
+(defrule
+(current-age == feudal-age)
+=>
+(set-strategic-number sn-food-gatherer-percentage 50)
+(set-strategic-number sn-wood-gatherer-percentage 20)
+(set-strategic-number sn-gold-gatherer-percentage 30)
+(set-strategic-number sn-stone-gatherer-percentage 0)
+)
+
+(defrule
+(current-age == castle-age)
+=>
+(set-strategic-number sn-food-gatherer-percentage 30)
+(set-strategic-number sn-wood-gatherer-percentage 20)
+(set-strategic-number sn-gold-gatherer-percentage 30)
+(set-strategic-number sn-stone-gatherer-percentage 10)
+)
