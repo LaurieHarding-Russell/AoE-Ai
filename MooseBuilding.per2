@@ -31,6 +31,7 @@
 ;Military Objects
 (defrule
   (current-age == feudal-age)
+  (building-type-count-total archery-range < 2)
   (can-build archery-range)
 =>
   (build archery-range)
@@ -38,9 +39,10 @@
 
 (defrule
   (current-age == feudal-age)
-  (can-build archery-range)
+  (building-type-count-total archery-range < 1)
+  (can-build barracks)
 =>
-  (build archery-range)
+  (build barracks)
 )
 
 ;Defence
