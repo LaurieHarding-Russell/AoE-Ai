@@ -12,14 +12,28 @@
 
 (defrule
 	(current-age == dark-age)
-	(unit-type-count-total villager < 10)
-	(goal ENABLE-VILLAGER-PRODUCTION YES)
-	(or
-		(food-amount < 450)
-		(unit-type-count-total villager < 28)
-	)
+	(unit-type-count-total villager < 20)
+  (can-train villager)
 =>
-(can-train villager)
+	(train villager)
+)
+
+(defrule
+	(current-age == feudal-age)
+  (unit-type-count-total villager < 30)
+  (can-train villager)
+  (or
+	 (food-amount > 800)
+   (can-train villager)
+  )
+=>
+	(train villager)
+)
+(defrule
+	(current-age >= castle-age)
+  (unit-type-count-total villager < 50)
+  (can-train villager)
+=>
 	(train villager)
 )
 
