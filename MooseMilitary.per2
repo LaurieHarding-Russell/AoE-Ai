@@ -1,15 +1,23 @@
 ; Keeping the army simple
 ; *******************************************************************************************************
 (defrule
+  (gold-amount > 1000)
   (can-train archer-line)
 =>
   (train archer-line)
 )
 
 (defrule
+  (gold-amount > 1000)
   (can-train militiaman-line)
 =>
   (train militiaman-line)
+)
+(defrule
+  (gold-amount > 1000)
+  (can-train monk)
+=>
+  (train monk)
 )
 
 ;Fighting
