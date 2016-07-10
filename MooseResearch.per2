@@ -1,18 +1,21 @@
 ;Age update
 ; ******************************************************
 (defrule
+  (unit-type-count-total villager > 10)
   (can-research feudal-age)
 =>
   (research feudal-age)
 )
 
 (defrule
+  (unit-type-count-total villager > 20)
   (can-research castle-age)
 =>
   (research castle-age)
 )
 
 (defrule
+  (unit-type-count-total villager > 20)
   (can-research imperial-age)
 =>
   (research imperial-age)
@@ -20,3 +23,130 @@
 
 ; Economic
 ; **************************************************
+; Farm upgrades
+(defrule
+  (can-research ri-horse-collar)
+=>
+  (research ri-horse-collar)
+)
+
+(defrule
+  (unit-type-count-total villager > 5)
+  (can-research ri-heavy-plow)
+=>
+  (research ri-heavy-plow)
+)
+
+(defrule
+  (unit-type-count-total villager > 5)
+  (can-research ri-crop-rotation)
+=>
+  (research ri-crop-rotation)
+)
+
+; Lumberyard upgrades
+(defrule
+  (unit-type-count-total villager > 5)
+  (can-research ri-bow-saw)
+=>
+  (research ri-bow-saw)
+)
+
+(defrule
+  (unit-type-count-total villager > 5)
+  (can-research ri-double-bit-axe)
+=>
+  (research ri-double-bit-axe)
+)
+
+(defrule
+  (unit-type-count-total villager > 5)
+  (can-research ri-two-man-saw)
+=>
+  (research ri-two-man-saw)
+)
+
+;market
+(defrule
+  (unit-type-count-total trade-cart > 3)
+  (can-research ri-banking)
+  (food-amount > 800)
+  (gold-amount > 800)
+  (wood-amount > 800)
+=>
+  (research ri-banking)
+)
+
+(defrule
+  (unit-type-count-total trade-cart > 3)
+  (can-research ri-cartography)
+  (food-amount > 800)
+  (gold-amount > 800)
+  (wood-amount > 800)
+=>
+  (research ri-cartography)
+)
+
+(defrule
+  (unit-type-count-total trade-cart > 3)
+  (can-research ri-coinage)
+  (food-amount > 800)
+  (gold-amount > 800)
+  (wood-amount > 800)
+=>
+  (research ri-coinage)
+)
+(defrule
+  (unit-type-count-total trade-cart > 3)
+  (can-research ri-guilds)
+  (food-amount > 800)
+  (gold-amount > 800)
+  (wood-amount > 800)
+=>
+  (research ri-guilds)
+)
+; Military
+; *****************************************************
+; Archer upgrades
+(defrule
+  (unit-type-count-total villager > 5)
+  (can-research ri-crossbow)
+=>
+  (research ri-crossbow)
+)
+
+(defrule
+  (unit-type-count-total villager > 5)
+  (can-research ri-arbalest)
+=>
+  (research ri-arbalest)
+)
+
+; Archer upgrades smithy
+(defrule
+  (unit-type-count-total villager > 5)
+  (can-research ri-bodkin-arrow)
+=>
+  (research ri-bodkin-arrow)
+)
+
+(defrule
+  (unit-type-count-total villager > 5)
+  (can-research ri-bracer)
+=>
+  (research ri-bracer)
+)
+
+(defrule
+  (unit-type-count-total villager > 5)
+  (can-research ri-ring-archer-armor)
+=>
+  (research ri-ring-archer-armor)
+)
+
+(defrule
+  (unit-type-count-total villager > 5)
+  (can-research ri-padded-archer-armor)
+=>
+  (research ri-padded-archer-armor)
+)

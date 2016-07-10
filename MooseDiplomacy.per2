@@ -1,6 +1,25 @@
+; Give
+; *********************************************************
 (defrule
   (taunt-detected any-enemy 3)
  =>
    (acknowledge-taunt this-any-enemy 3)
    (chat-to-player this-any-enemy "I'm not that dumb")
+)
+
+(defrule
+  (taunt-detected any-ally 3)
+ =>
+   (acknowledge-taunt this-any-ally 3)
+   (chat-to-player this-any-ally "I got your back!")
+   (tribute-to-player this-any-ally food 100)
+)
+
+; Need
+;********************************************************
+(defrule
+  (food-amount < 50)
+  (unit-type-count-total villager == 0)
+=>
+  (chat-to-allies "3")
 )

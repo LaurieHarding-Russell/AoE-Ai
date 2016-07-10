@@ -3,21 +3,46 @@
 (defrule
   (gold-amount > 1000)
   (can-train archer-line)
+  (unit-type-count-total archer < 20)
 =>
   (train archer-line)
 )
 
 (defrule
+  (unit-type-count-total villager > 10)
   (gold-amount > 1000)
   (can-train militiaman-line)
+  (unit-type-count-total militiaman < 20)
+  (unit-type-count-total villager > 10)
 =>
   (train militiaman-line)
 )
+
+(defrule
+  (food-amount > 1000)
+  (unit-type-count-total villager > 10)
+  (can-train scout-cavalry-line)
+  (unit-type-count-total scout-cavalry-line < 20)
+  (unit-type-count-total villager > 10)
+=>
+  (train scout-cavalry-line)
+)
+
 (defrule
   (gold-amount > 1000)
   (can-train monk)
+  (unit-type-count-total monk < 20)
 =>
   (train monk)
+
+  )
+(defrule
+  (gold-amount > 1000)
+  (can-train trebuchet)
+  (unit-type-count-total trebuchet < 5)
+  (unit-type-count-total villager > 10)
+=>
+  (train trebuchet)
 )
 
 ;Fighting
@@ -39,7 +64,7 @@
 	(disable-self)
 )
 
-;Scoutingv
+;Scouting
 ; *******************************************************************************************************
 ;Defence
 (defrule
@@ -58,10 +83,10 @@
 	(not (town-under-attack))
 	(event-detected trigger 1)
 =>
-	(set-strategic-number sn-maximum-defend-group-size 0)
+	(set-strategic-number sn-maximum-defend-group-size 5)
 	(set-strategic-number sn-minimum-defend-group-size 0)
-	(set-strategic-number sn-number-defend-groups 0)
-	(set-strategic-number sn-percent-attack-soldiers 0)
+	(set-strategic-number sn-number-defend-groups 1)
+	(set-strategic-number sn-percent-attack-soldiers 5)
 )
 
 ; Special Cases

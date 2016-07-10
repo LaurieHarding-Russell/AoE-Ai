@@ -10,12 +10,29 @@
 )
 
 (defrule
+  (housing-headroom < 5)
+  (wood-amount > 10000)
+  (can-build house)
+=>
+  (build house)
+)
+
+(defrule
   (building-type-count-total house > 0) ; We want to build a house before a mill
   (building-type-count-total mill == 0) ; Prevents the construction of multiple mills
   (resource-found food) ; Builds a mill only if forage bushes or deer is found
   (can-build mill)
 =>
   (build mill)
+)
+
+(defrule
+  (resource-found stone)
+  (can-build town-center)
+  (wood-amount > 1000)
+  (stone-amount > 400)
+=>
+  (build town-center)
 )
 
 (defrule
@@ -30,6 +47,15 @@
   (building-type-count-total mill > 0)
   (resource-found gold)
   (can-build mining-camp)
+  (wood-amount > 400)
+=>
+  (build mining-camp)
+)
+(defrule
+  (building-type-count-total mill > 0)
+  (resource-found stone)
+  (can-build mining-camp)
+  (wood-amount > 400)
 =>
   (build mining-camp)
 )
@@ -48,7 +74,7 @@
   (building-type-count-total archery-range < 1)
   (can-build archery-range)
   (or
-    (food-amount > 5000)
+    (wood-amount > 10000)
     (building-type-count-total archery-range < 5)
   )
 =>
@@ -59,9 +85,26 @@
   (current-age >= feudal-age)
   (building-type-count-total barracks < 1)
   (can-build barracks)
+  (or
+    (wood-amount > 10000)
+    (building-type-count-total archery-range < 5)
+  )
 =>
   (build barracks)
 )
+
+(defrule
+  (current-age >= feudal-age)
+  (building-type-count-total stable < 1)
+  (can-build stable)
+  (or
+    (wood-amount > 10000)
+    (building-type-count-total archery-range < 5)
+  )
+=>
+  (build stable)
+)
+
 (defrule
   (current-age >= castle-age)
   (building-type-count-total monastery < 1)
@@ -72,6 +115,7 @@
 
 ;Defence
 ; *******************************************************************************************************
+
 (defrule
   (current-age >= castle-age)
   (building-type-count-total watch-tower < 5)
@@ -85,4 +129,34 @@
   (can-build castle)
 =>
   (build castle)
+)
+
+; Walls!!!!
+(defrule
+  (wall-completed-percentage 1 > 66)  ; checks that wall is only needed for 66% of the square
+=>
+  (enable-wall-placement 1)
+  (disable-self)
+)
+
+(defrule
+  (can-build-wall 1 stone-wall-line)
+=>
+  (build-wall 1 stone-wall-line)
+)
+
+(defrule
+  (can-build-gate 1)
+  (building-type-count-total gate < 5)
+=>
+  (build-gate 1)
+)
+
+;Research Objects
+; *******************************************************************************************************
+(defrule
+  (can-build blacksmith)
+  (building-type-count-total blacksmith < 1)
+=>
+  (build blacksmith)
 )
