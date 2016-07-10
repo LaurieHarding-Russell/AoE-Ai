@@ -36,20 +36,17 @@
 
 (defrule
   (current-age >= feudal-age)
-  (building-type-count-total mill  > 0)
   (can-build market)
 =>
-  (build mining-market)
+  (build market)
 )
 
 ;Military Objects
 ; *******************************************************************************************************
 (defrule
-  (
-    (current-age >= feudal-age)
-    (building-type-count-total archery-range < 1)
-    (can-build archery-range)
-  )
+  (current-age >= feudal-age)
+  (building-type-count-total archery-range < 1)
+  (can-build archery-range)
   (or
     (food-amount > 5000)
     (building-type-count-total archery-range < 5)
@@ -78,7 +75,6 @@
 
 (defrule
   (current-age >= castle-age)
-  (building-type-count-total castle)
   (can-build castle)
 =>
   (build castle)
