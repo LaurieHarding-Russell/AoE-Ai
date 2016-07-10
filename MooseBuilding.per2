@@ -62,6 +62,7 @@
 
 (defrule
   (current-age >= feudal-age)
+  (building-type-count-total market < 1)
   (can-build market)
 =>
   (build market)
@@ -141,12 +142,14 @@
 
 (defrule
   (can-build-wall 1 stone-wall-line)
+  (housing-headroom > 5)  ; Don't want to hurt the housing market!
 =>
   (build-wall 1 stone-wall-line)
 )
 
 (defrule
   (can-build-gate 1)
+  (housing-headroom > 5)  ; Don't want to hurt the housing market!
   (building-type-count-total gate < 5)
 =>
   (build-gate 1)
