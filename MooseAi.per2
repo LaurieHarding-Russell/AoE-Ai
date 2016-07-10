@@ -12,3 +12,5 @@
 (load "MooseEconomy")
 (load "MooseMilitary")
 (load "MooseResearch")
+(load "MooseDiplomacy")
+(load "MooseMarket")

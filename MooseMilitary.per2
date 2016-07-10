@@ -31,7 +31,7 @@
 	(disable-self)
 )
 
-;Scouting
+;Scoutingv
 ; *******************************************************************************************************
 ;Defence
 (defrule
@@ -54,4 +54,20 @@
 	(set-strategic-number sn-minimum-defend-group-size 0)
 	(set-strategic-number sn-number-defend-groups 0)
 	(set-strategic-number sn-percent-attack-soldiers 0)
+)
+
+; Special Cases
+; *****************************************************************************************************
+(defrule
+(players-building-type-count any-enemy wonder > 0)
+=>
+(set-strategic-number sn-special-attack-type1 wonder)
+(set-strategic-number sn-special-attack-influence1 100)
+)
+
+(defrule
+(enemy-captured-relics)
+=>
+(set-strategic-number sn-special-attack-type1 monastery)
+(set-strategic-number sn-special-attack-influence1 100)
 )
