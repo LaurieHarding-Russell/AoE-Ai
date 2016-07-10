@@ -10,6 +10,7 @@
   (disable-self)
 )
 
+; *******************************************************************************************************
 (defrule
 	(current-age == dark-age)
 	(unit-type-count-total villager < 20)
@@ -29,6 +30,7 @@
 =>
 	(train villager)
 )
+
 (defrule
 	(current-age >= castle-age)
   (unit-type-count-total villager < 50)
@@ -36,7 +38,7 @@
 =>
 	(train villager)
 )
-
+; *******************************************************************************************************
 ;build a farm
 (defrule
   (idle-farm-count < 2)
@@ -46,6 +48,7 @@
 )
 
 ;set gatherer distribution for villagers
+; *******************************************************************************************************
 (defrule
   (current-age == dark-age)
 =>
