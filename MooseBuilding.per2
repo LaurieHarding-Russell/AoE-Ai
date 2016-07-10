@@ -62,6 +62,13 @@
 =>
   (build barracks)
 )
+(defrule
+  (current-age >= castle-age)
+  (building-type-count-total monastery < 1)
+  (can-build monastery)
+=>
+  (build monastery)
+)
 
 ;Defence
 ; *******************************************************************************************************

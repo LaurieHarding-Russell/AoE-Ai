@@ -1,0 +1,6 @@
+(defrule
+  (taunt-detected any-enemy 3)
+ =>
+   (acknowledge-taunt this-any-enemy 3)
+   (chat-to-player this-any-enemy "I'm not that dumb")
+)

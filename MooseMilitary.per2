@@ -7,9 +7,9 @@
 )
 
 (defrule
-  (can-train skirmisher-line)
+  (can-train militiaman-line)
 =>
-  (train skirmisher-line)
+  (train militiaman-line)
 )
 
 ;Fighting
