@@ -36,7 +36,7 @@
 
 (defrule
   (current-age >= feudal-age)
-  (building-type-count-total > 0)
+  (building-type-count-total mill  > 0)
   (can-build market)
 =>
   (build mining-market)
@@ -69,9 +69,17 @@
 ;Defence
 ; *******************************************************************************************************
 (defrule
-  (current-age == castle-age)
+  (current-age >= castle-age)
   (building-type-count-total watch-tower < 5)
   (can-build watch-tower)
 =>
   (build watch-tower)
+)
+
+(defrule
+  (current-age >= castle-age)
+  (building-type-count-total castle)
+  (can-build castle)
+=>
+  (build castle)
 )
