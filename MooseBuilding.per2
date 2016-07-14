@@ -34,13 +34,27 @@
 =>
   (build town-center)
 )
-
+; lumber mill
 (defrule
   (building-type-count-total mill > 0)
+  (building-type-count-total lumber-camp == 0)
   (resource-found wood)
   (can-build lumber-camp)
 =>
   (build lumber-camp)
+  (enable-timer 1 180)
+)
+
+(defrule
+  (timer-triggered 1)
+  (building-type-count-total mill > 0)
+  (housing-headroom > 5)  ; Don't want to hurt the housing market!
+  (resource-found wood)
+  (can-build lumber-camp)
+=>
+  (disable-timer 1)
+  (build lumber-camp)
+  (enable-timer 1 180)
 )
 
 (defrule
@@ -142,6 +156,8 @@
 
 (defrule
   (can-build-wall 1 stone-wall-line)
+  (current-age >= castle-age)
+  (stone-amount > 450)
   (housing-headroom > 5)  ; Don't want to hurt the housing market!
 =>
   (build-wall 1 stone-wall-line)

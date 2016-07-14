@@ -19,13 +19,29 @@
 )
 
 (defrule
+  (can-train spearman-line)
+  (unit-type-count-total villager > 10)
+  (military-population < 10)
+=>
+  (train spearman-line)
+)
+
+(defrule
   (food-amount > 1000)
   (unit-type-count-total villager > 10)
   (can-train scout-cavalry-line)
   (unit-type-count-total scout-cavalry-line < 20)
-  (unit-type-count-total villager > 10)
 =>
   (train scout-cavalry-line)
+)
+(defrule
+  (food-amount > 1000)
+  (gold-amount > 1000)
+  (unit-type-count-total villager > 15)
+  (can-train knight-line)
+  (unit-type-count-total knight-line < 20)
+=>
+  (train knight-line)
 )
 
 (defrule
@@ -48,7 +64,14 @@
 ;Fighting
 ; *******************************************************************************************************
 (defrule
-  (current-age == castle-age)
+  (current-age == feudal-age)
+  (military-population >= 10)
+=>
+  (attack-now)
+)
+
+(defrule
+  (current-age > feudal-age)
   (military-population >= 30)
 =>
   (attack-now)
@@ -91,11 +114,29 @@
 
 ; Special Cases
 ; *****************************************************************************************************
-(defrule
-(players-building-type-count any-enemy wonder > 0)
+
+(defrule  ; start of the game who are we going after!
+  (current-age < imperial-age)
 =>
-(set-strategic-number sn-special-attack-type1 wonder)
-(set-strategic-number sn-special-attack-influence1 100)
+  (set-strategic-number sn-special-attack-type1 villager)
+  (set-strategic-number sn-special-attack-influence1 80)
+  (disable-self)
+)
+
+(defrule  ; start of the game who are we going after!
+  (current-age == imperial-age)
+=>
+  (set-strategic-number sn-special-attack-type1 castle)
+  (set-strategic-number sn-special-attack-influence1 80)
+  (disable-self)
+)
+
+
+(defrule
+  (players-building-type-count any-enemy wonder > 0)
+=>
+  (set-strategic-number sn-special-attack-type1 wonder)
+  (set-strategic-number sn-special-attack-influence1 100)
 )
 
 (defrule

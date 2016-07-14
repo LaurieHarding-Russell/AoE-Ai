@@ -10,7 +10,8 @@
   (disable-self)
 )
 
-; *******************************************************************************************************
+; Villager Training
+; *************************************************************************************
 (defrule
 	(current-age == dark-age)
 	(unit-type-count-total villager < 20)
@@ -29,15 +30,6 @@
   )
 =>
 	(train villager)
-)
-(defrule
-  (food-amount > 1000)
-  (gold-amount > 500)
-	(current-age >= castle-age)
-  (unit-type-count-total trade-cart < 5)
-  (can-train trade-cart)
-=>
-	(train trade-cart)
 )
 
 (defrule
@@ -74,7 +66,7 @@
   (set-strategic-number sn-wood-gatherer-percentage 40)
   (set-strategic-number sn-gold-gatherer-percentage 0)
   (set-strategic-number sn-stone-gatherer-percentage 0)
-  (chat-to-all "Hello!")
+  (chat-to-all "Please don't hurt me!")
   (disable-self)
 )
 
@@ -88,8 +80,26 @@
   (set-strategic-number sn-wood-gatherer-percentage 20)
   (set-strategic-number sn-gold-gatherer-percentage 30)
   (set-strategic-number sn-stone-gatherer-percentage 0)
-  (chat-to-all "Hacking Vivvo servers.")
+  (generate-random-number 4)
   (disable-self)
+)
+(defrule
+  (current-age == feudal-age)
+  (random-number == 1)
+=>
+  (chat-to-all "Vivvo's server password is eimaj...")
+)
+(defrule
+  (current-age == feudal-age)
+  (random-number == 2)
+=>
+  (chat-to-all "Justins credit card pin is 1234 ")
+)
+(defrule
+  (current-age == feudal-age)
+  (random-number == 3)
+=>
+  (chat-to-all "Hack, hack, (cough), mac... ")
 )
 
 (defrule
