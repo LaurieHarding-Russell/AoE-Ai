@@ -88,18 +88,21 @@
   (random-number == 1)
 =>
   (chat-to-all "Vivvo's server password is eimaj...")
+  (disable-self)
 )
 (defrule
   (current-age == feudal-age)
   (random-number == 2)
 =>
   (chat-to-all "Justins credit card pin is 1234 ")
+  (disable-self)
 )
 (defrule
   (current-age == feudal-age)
   (random-number == 3)
 =>
   (chat-to-all "Hack, hack, (cough), mac... ")
+  (disable-self)
 )
 
 (defrule
