@@ -61,7 +61,7 @@
   (building-type-count-total mill > 0)
   (resource-found gold)
   (can-build mining-camp)
-  (wood-amount > 400)
+  (wood-amount > 600)
 =>
   (build mining-camp)
 )
@@ -69,7 +69,7 @@
   (building-type-count-total mill > 0)
   (resource-found stone)
   (can-build mining-camp)
-  (wood-amount > 400)
+  (wood-amount > 600)
 =>
   (build mining-camp)
 )
