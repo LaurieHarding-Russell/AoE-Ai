@@ -23,3 +23,15 @@
 =>
   (chat-to-allies "3")
 )
+
+
+; Resign
+(defrule
+  (building-type-count town-center less-than 1)
+  (unit-type-count-total villager == 0)
+  (not (can-train villager) )
+=>
+  (chat-to-all "Oh well, I'm off to take over the real world now.")
+  (resign)
+  (disable-self)
+)

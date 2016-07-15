@@ -65,10 +65,43 @@
 =>
   (research ri-two-man-saw)
 )
+; Mine
+(defrule
+  (unit-type-count-total villager > 5)
+  (can-research ri-gold-mining)
+  (current-age == castle-age)
+=>
+  (research ri-gold-mining)
+)
+
+(defrule
+  (unit-type-count-total villager > 5)
+  (can-research ri-stone-mining)
+  (current-age == castle-age)
+=>
+  (research ri-stone-mining)
+)
+
+(defrule
+  (unit-type-count-total villager > 5)
+  (can-research ri-gold-shaft-mining)
+  (current-age == castle-age)
+=>
+  (research ri-gold-shaft-mining)
+)
+
+(defrule
+  (unit-type-count-total villager > 5)
+  (can-research ri-stone-shaft-mining)
+  (current-age == castle-age)
+=>
+  (research ri-stone-shaft-mining)
+)
 
 ;market
 (defrule
   (unit-type-count-total trade-cart > 3)
+  (current-age == imperial-age)
   (can-research ri-banking)
   (food-amount > 800)
   (gold-amount > 800)
@@ -83,6 +116,7 @@
   (food-amount > 800)
   (gold-amount > 800)
   (wood-amount > 800)
+  (current-age == imperial-age)
 =>
   (research ri-cartography)
 )
@@ -90,27 +124,22 @@
 (defrule
   (unit-type-count-total trade-cart > 3)
   (can-research ri-coinage)
+  (current-age == imperial-age)
   (food-amount > 800)
   (gold-amount > 800)
   (wood-amount > 800)
 =>
   (research ri-coinage)
 )
-(defrule
-  (unit-type-count-total trade-cart > 3)
-  (can-research ri-guilds)
-  (food-amount > 800)
-  (gold-amount > 800)
-  (wood-amount > 800)
-=>
-  (research ri-guilds)
-)
 ; Military
 ; *****************************************************
 ; Archer upgrades
+;**********************
+
 (defrule
   (unit-type-count-total villager > 5)
   (can-research ri-crossbow)
+  (unit-type-count archer > 6)
 =>
   (research ri-crossbow)
 )
@@ -118,32 +147,19 @@
 (defrule
   (unit-type-count-total villager > 5)
   (can-research ri-arbalest)
+  (unit-type-count crossbowman  > 10)
 =>
   (research ri-arbalest)
 )
 
-; Archer upgrades smithy
+; Archer upgrades smith
+;*********************
 (defrule
   (unit-type-count-total villager > 5)
-  (can-research ri-bodkin-arrow)
+  (can-research ri-fletching)
 =>
-  (research ri-bodkin-arrow)
+  (research ri-fletching)
 )
-
-(defrule
-  (unit-type-count-total villager > 5)
-  (can-research ri-bracer)
-=>
-  (research ri-bracer)
-)
-
-(defrule
-  (unit-type-count-total villager > 5)
-  (can-research ri-ring-archer-armor)
-=>
-  (research ri-ring-archer-armor)
-)
-
 (defrule
   (unit-type-count-total villager > 5)
   (can-research ri-padded-archer-armor)
@@ -151,4 +167,36 @@
   (research ri-padded-archer-armor)
 )
 
-; man at arms
+(defrule
+  (current-age == imperial-age)
+  (unit-type-count-total villager > 5)
+  (can-research ri-bodkin-arrow)
+=>
+  (research ri-bodkin-arrow)
+)
+
+(defrule
+  (current-age == imperial-age)
+  (unit-type-count-total villager > 5)
+  (can-research ri-bracer)
+=>
+  (research ri-bracer)
+)
+
+(defrule
+  (current-age == imperial-age)
+  (unit-type-count-total villager > 5)
+  (can-research ri-ring-archer-armor)
+=>
+  (research ri-ring-archer-armor)
+)
+
+; Militia
+;**********************
+(defrule
+  (current-age == imperial-age)
+  (unit-type-count-total villager > 5)
+  (can-research ri-ring-archer-armor)
+=>
+  (research ri-ring-archer-armor)
+)

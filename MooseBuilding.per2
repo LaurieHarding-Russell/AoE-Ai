@@ -1,5 +1,13 @@
 ;Economy objects
 ; *******************************************************************************************************
+;maintain a town center
+(defrule
+  (building-type-count town-center less-than 1)
+  (can-build town-center)
+=>
+  (build town-center)
+)
+
 ;build a house
 (defrule
   (housing-headroom < 5)
@@ -27,13 +35,13 @@
 )
 
 (defrule
-  (resource-found stone)
   (can-build town-center)
   (wood-amount > 1000)
   (stone-amount > 400)
 =>
   (build town-center)
 )
+
 ; lumber mill
 (defrule
   (building-type-count-total mill > 0)
@@ -50,6 +58,7 @@
   (building-type-count-total mill > 0)
   (housing-headroom > 5)  ; Don't want to hurt the housing market!
   (resource-found wood)
+  (dropsite-min-distance wood > 5)
   (can-build lumber-camp)
 =>
   (disable-timer 1)
@@ -61,6 +70,7 @@
   (building-type-count-total mill > 0)
   (resource-found gold)
   (can-build mining-camp)
+  (dropsite-min-distance gold > 5)
   (wood-amount > 600)
 =>
   (build mining-camp)
@@ -69,6 +79,7 @@
   (building-type-count-total mill > 0)
   (resource-found stone)
   (can-build mining-camp)
+  (dropsite-min-distance stone > 5)
   (wood-amount > 600)
 =>
   (build mining-camp)
