@@ -157,18 +157,20 @@
 (defrule
   (unit-type-count-total villager > 5)
   (can-research ri-fletching)
+  (unit-type-count archer > 6)
 =>
   (research ri-fletching)
 )
+
 (defrule
-  (unit-type-count-total villager > 5)
+  (current-age == imperial-age)
   (can-research ri-padded-archer-armor)
+  (unit-type-count arbalest  > 10)
 =>
   (research ri-padded-archer-armor)
 )
 
 (defrule
-  (current-age == imperial-age)
   (unit-type-count-total villager > 5)
   (can-research ri-bodkin-arrow)
 =>
@@ -177,14 +179,18 @@
 
 (defrule
   (current-age == imperial-age)
+  (can-research ri-leather-archer-armor)
+=>
+  (research ri-leather-archer-armor)
+)
+
+(defrule
   (unit-type-count-total villager > 5)
   (can-research ri-bracer)
 =>
   (research ri-bracer)
 )
-
 (defrule
-  (current-age == imperial-age)
   (unit-type-count-total villager > 5)
   (can-research ri-ring-archer-armor)
 =>
@@ -196,7 +202,23 @@
 (defrule
   (current-age == imperial-age)
   (unit-type-count-total villager > 5)
-  (can-research ri-ring-archer-armor)
+  (can-research ri-scale-mail)
 =>
-  (research ri-ring-archer-armor)
+  (research ri-scale-mail)
+)
+
+(defrule
+  (unit-type-count-total villager > 5)
+  (can-research ri-pikeman)
+  (unit-type-count-total spearman > 2)
+=>
+  (research ri-pikeman)
+)
+
+(defrule
+  (unit-type-count-total villager > 5)
+  (can-research ri-man-at-arms)
+  (unit-type-count militiaman > 10)
+=>
+  (research ri-man-at-arms)
 )
